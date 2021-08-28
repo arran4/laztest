@@ -29,12 +29,12 @@ jobs:
       if: ${{ matrix.operating-system == 'windows-latest' }}
       run: | 
         lazbuild -B "project1.lpi"
-        7z c project1-win64.7z project1.exe
+        7z -c project1-win64.7z project1.exe
     - name: Build the Main Application
       if: ${{ matrix.operating-system == 'ubuntu-latest' }}
       run: | 
         lazbuild -B "project1.lpi"
-        7z c project1-linux64.7z project1
+        bzip2 -c project1 > project1-linux64.bz2
     - name: Build the Main Application (macOS)
       if: ${{ matrix.operating-system == 'macos-latest' }}
       run: |
