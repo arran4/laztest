@@ -29,18 +29,17 @@ jobs:
       if: ${{ matrix.operating-system == 'windows-latest' }}
       run: | 
         lazbuild -B "project1.lpi"
+        zip c project1-win64.zip project1.exe
     - name: Build the Main Application
       if: ${{ matrix.operating-system == 'ubuntu-latest' }}
       run: | 
         lazbuild -B "project1.lpi"
-        find .
-        ls -ltRa
+        zip c project1-linux64.zip project1
     - name: Build the Main Application (macOS)
       if: ${{ matrix.operating-system == 'macos-latest' }}
       run: |
         lazbuild -B --ws=cocoa "project1.lpi"
-        find .
-        ls -ltRa
+        pkgbuild --install-location /Applications --component package
     - name: Release
       uses: softprops/action-gh-release@v1
       if: startsWith(github.ref, 'refs/tags/')
@@ -48,5 +47,4 @@ jobs:
         files: |
           Release.txt
           LICENSE
-          project1.exe
-          project1
+          *.zip
