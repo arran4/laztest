@@ -29,3 +29,12 @@ jobs:
     - name: Build the Main Application (macOS)
       if: ${{ matrix.operating-system == 'macos-latest' }}
       run: lazbuild -B --ws=cocoa "project1.lpi"
+    - name: Release
+      uses: softprops/action-gh-release@v1
+      if: startsWith(github.ref, 'refs/tags/')
+      with:
+        files: |
+          Release.txt
+          LICENSE
+          project1.exe
+          project1
