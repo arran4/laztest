@@ -43,7 +43,7 @@ jobs:
       if: ${{ matrix.operating-system == 'macos-latest' }}
       run: |
         lazbuild -B --ws=cocoa "project1.lpi"
-        pkgbuild --identifier com.arran4.laztest --install-location /Applications --root "$PWD" --component project1 project1.pkg
+        pkgbuild --identifier com.arran4.laztest --install-location /Applications  --component project1 project1.pkg
     - name: Release
       uses: softprops/action-gh-release@v1
       if: startsWith(github.ref, 'refs/tags/')
