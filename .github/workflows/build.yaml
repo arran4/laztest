@@ -27,10 +27,14 @@ jobs:
         include-packages: "Synapse 40.1"
     - name: Build the Main Application
       if: ${{ matrix.operating-system != 'macos-latest' }}
-      run: lazbuild -B "project1.lpi"
+      run: | 
+        lazbuild -B "project1.lpi"
+        find .
     - name: Build the Main Application (macOS)
       if: ${{ matrix.operating-system == 'macos-latest' }}
-      run: lazbuild -B --ws=cocoa "project1.lpi"
+      run: |
+        lazbuild -B --ws=cocoa "project1.lpi"
+        find .
     - name: Release
       uses: softprops/action-gh-release@v1
       if: startsWith(github.ref, 'refs/tags/')
