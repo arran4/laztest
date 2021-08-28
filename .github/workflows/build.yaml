@@ -25,9 +25,7 @@ jobs:
         include-packages: "Synapse 40.1"
     - name: Build the Main Application
       if: ${{ matrix.operating-system != 'macos-latest' }}
-      run: lazbuild -B "src/project1.lpi"
+      run: lazbuild -B "project1.lpi"
     - name: Build the Main Application (macOS)
       if: ${{ matrix.operating-system == 'macos-latest' }}
-      run: lazbuild -B --ws=cocoa "src/project1.lpi"
-    - name: Build the Unit Tests Application
-      run: lazbuild -B "tests/project1.lpi"
+      run: lazbuild -B --ws=cocoa "project1.lpi"
