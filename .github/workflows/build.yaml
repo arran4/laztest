@@ -33,8 +33,8 @@ jobs:
     - name: Build the Main Application
       if: ${{ matrix.operating-system == 'ubuntu-latest' }}
       run: | 
-        lazbuild -B "project1.lpi" --ws=qt
-        bzip2 -c project1 > project1-linux64-qt4.bz2
+        # lazbuild -B "project1.lpi" --ws=qt
+        # bzip2 -c project1 > project1-linux64-qt4.bz2
         # lazbuild -B "project1.lpi" --ws=qt5
         # bzip2 -c project1 > project1-linux64-qt5.bz2
         lazbuild -B "project1.lpi" --ws=gtk2
