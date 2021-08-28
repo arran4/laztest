@@ -26,7 +26,11 @@ jobs:
         lazarus-version: ${{ matrix.lazarus-versions }}
         include-packages: "Synapse 40.1"
     - name: Build the Main Application
-      if: ${{ matrix.operating-system != 'macos-latest' }}
+      if: ${{ matrix.operating-system == 'windows-latest' }}
+      run: | 
+        lazbuild -B "project1.lpi"
+    - name: Build the Main Application
+      if: ${{ matrix.operating-system == 'ubuntu-latest' }}
       run: | 
         lazbuild -B "project1.lpi"
         find .
