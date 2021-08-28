@@ -42,8 +42,8 @@ jobs:
     - name: Build the Main Application (macOS)
       if: ${{ matrix.operating-system == 'macos-latest' }}
       run: |
-        lazbuild -B --ws=cocoa "project1.lpi"
-        pkgbuild --identifier com.arran4.laztest --install-location /Applications  --component project1 project1.pkg
+        lazbuild -B --ws=cocoa "project1.lpi" --build-mode=packaging
+        #pkgbuild --identifier com.arran4.laztest --install-location /Applications  --component project1 project1.pkg
     - name: Release
       uses: softprops/action-gh-release@v1
       if: startsWith(github.ref, 'refs/tags/')
