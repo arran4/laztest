@@ -39,7 +39,7 @@ jobs:
       if: ${{ matrix.operating-system == 'macos-latest' }}
       run: |
         lazbuild -B --ws=cocoa "project1.lpi"
-        pkgbuild --install-location /Applications --component package
+        pkgbuild --install-location /Applications --component package project1.pkg
     - name: Release
       uses: softprops/action-gh-release@v1
       if: startsWith(github.ref, 'refs/tags/')
